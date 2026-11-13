@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dunes · דיונות לסנדבורד בעולם</title>
+<meta name="description" content="גלובוס אינטראקטיבי של הדיונות הטובות בעולם לסנדבורד: גובה, ציון, בטיחות, גישה ומפעילים.">
+<meta name="theme-color" content="#14112e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Karantina:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+<div id="globe" aria-label="גלובוס דיונות"></div>
+<svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+  <path class="r1" d="M0 70 C 180 30, 300 30, 470 62 S 760 96, 930 54 S 1250 20, 1440 58 V120 H0Z"/>
+  <path class="r2" d="M0 96 C 220 64, 380 72, 560 92 S 900 116, 1080 84 S 1330 70, 1440 88 V120 H0Z"/>
+</svg>
+
+<header class="top">
+  <h1 class="brand">
+    <span class="brand-en" lang="en">Dunes</span><span class="brand-sep"> · </span><span class="brand-he">דיונות לסנדבורד בעולם</span>
+  </h1>
+  <div class="searchrow">
+    <label class="search">
+      <span class="visually-hidden">חיפוש לפי שם או מדינה</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      <input id="q" type="search" placeholder="חיפוש דיונה או מדינה" autocomplete="off" enterkeyhint="search">
+    </label>
+    <button id="filterBtn" class="filterbtn" type="button" aria-expanded="false" aria-controls="filters">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"/></svg>
+      <span>סינון</span>
+      <span id="filterDot" class="filterdot" hidden></span>
+    </button>
+  </div>
+  <div id="filters" class="filters" hidden>
+    <fieldset>
+      <legend>בטיחות</legend>
+      <div class="chips" id="safetyChips"></div>
+    </fieldset>
+    <fieldset>
+      <legend>ציון סנדבורד מינימלי</legend>
+      <div class="chips score" id="scoreChips"></div>
+    </fieldset>
+    <fieldset>
+      <legend>אזור</legend>
+      <div class="chips" id="regionChips"></div>
+    </fieldset>
+    <button id="resetBtn" class="linkbtn" type="button">איפוס סינון</button>
+  </div>
+  <p class="count" id="count" aria-live="polite"></p>
+</header>
+
+<section id="list" class="list" hidden aria-label="דירוג לפי ציון">
+  <div class="list-inner">
+    <h2 class="list-title">הדירוג, מהטובה ביותר</h2>
+    <ol id="listItems"></ol>
+    <p id="listEmpty" class="empty" hidden>אין דיונות שמתאימות לחיפוש. נסו לנקות את הסינון.</p>
+  </div>
+</section>
+
+<nav class="viewtoggle" aria-label="תצוגה">
+  <button type="button" data-view="globe" aria-pressed="true">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c3 3.2 3 13.8 0 17M12 3.5c-3 3.2-3 13.8 0 17"/></svg>
+    גלובוס
+  </button>
+  <button type="button" data-view="list" aria-pressed="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.5h11M9 12h11M9 17.5h11M4.5 6.5h.01M4.5 12h.01M4.5 17.5h.01"/></svg>
+    רשימה
+  </button>
+</nav>
+
+<aside id="panel" class="panel" aria-hidden="true" aria-labelledby="pName" role="dialog">
+  <div class="grip" id="grip" aria-hidden="true"><span></span></div>
+  <button class="close" id="closeBtn" type="button" aria-label="סגירה">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="panel-body" id="panelBody"></div>
+</aside>
+
+<p id="status" class="status" hidden></p>
+
+<footer class="foot">המידע לא מהווה ייעוץ בטיחותי · יש לבדוק אזהרות מסע עדכניות</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.46.2/dist/globe.gl.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
